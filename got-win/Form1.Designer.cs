@@ -54,35 +54,43 @@
             // 
             // picOriginal
             // 
+            this.picOriginal.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.picOriginal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.picOriginal.Location = new System.Drawing.Point(18, 111);
-            this.picOriginal.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.picOriginal.Margin = new System.Windows.Forms.Padding(4);
             this.picOriginal.Name = "picOriginal";
-            this.picOriginal.Size = new System.Drawing.Size(597, 501);
+            this.picOriginal.Size = new System.Drawing.Size(564, 501);
             this.picOriginal.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picOriginal.TabIndex = 1;
             this.picOriginal.TabStop = false;
             // 
             // picResized
             // 
+            this.picResized.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.picResized.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.picResized.Location = new System.Drawing.Point(632, 112);
-            this.picResized.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.picResized.Location = new System.Drawing.Point(590, 111);
+            this.picResized.Margin = new System.Windows.Forms.Padding(4);
             this.picResized.Name = "picResized";
-            this.picResized.Size = new System.Drawing.Size(545, 500);
+            this.picResized.Size = new System.Drawing.Size(564, 501);
             this.picResized.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picResized.TabIndex = 2;
             this.picResized.TabStop = false;
             // 
             // txtResult
             // 
-            this.txtResult.Location = new System.Drawing.Point(21, 650);
-            this.txtResult.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtResult.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtResult.Location = new System.Drawing.Point(18, 650);
+            this.txtResult.Margin = new System.Windows.Forms.Padding(4);
             this.txtResult.Multiline = true;
             this.txtResult.Name = "txtResult";
             this.txtResult.ReadOnly = true;
             this.txtResult.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtResult.Size = new System.Drawing.Size(1156, 471);
+            this.txtResult.Size = new System.Drawing.Size(1136, 471);
             this.txtResult.TabIndex = 3;
             // 
             // label1
@@ -140,7 +148,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1193, 1135);
+            this.ClientSize = new System.Drawing.Size(1173, 1135);
+            this.MinimumSize = new System.Drawing.Size(800, 600);
             this.Controls.Add(this.chkFormatted);
             this.Controls.Add(this.lblLoading);
             this.Controls.Add(this.label3);
