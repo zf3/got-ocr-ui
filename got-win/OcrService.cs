@@ -15,13 +15,13 @@ namespace got_win
         private readonly InferenceSession _session;
         private readonly IntPtr _ocrContext;
 
-        public readonly double CONFIG_RESCALE_FACTOR = 1.0 / 255.0;
-        public readonly double CONFIG_NORM_MEAN_R = 0.48145466;
-        public readonly double CONFIG_NORM_MEAN_G = 0.4578275;
-        public readonly double CONFIG_NORM_MEAN_B = 0.40821073;
-        public readonly double CONFIG_NORM_STD_R = 0.26862954;
-        public readonly double CONFIG_NORM_STD_G = 0.26130258;
-        public readonly double CONFIG_NORM_STD_B = 0.27577711;
+        private const double CONFIG_RESCALE_FACTOR = 1.0 / 255.0;
+        private const double CONFIG_NORM_MEAN_R = 0.48145466;
+        private const double CONFIG_NORM_MEAN_G = 0.4578275;
+        private const double CONFIG_NORM_MEAN_B = 0.40821073;
+        private const double CONFIG_NORM_STD_R = 0.26862954;
+        private const double CONFIG_NORM_STD_G = 0.26130258;
+        private const double CONFIG_NORM_STD_B = 0.27577711;
 
         [DllImport("libocr.dll", CallingConvention = CallingConvention.Cdecl)]
         private static extern IntPtr ocr_init(int argc, string[] argv);
@@ -41,31 +41,28 @@ namespace got_win
             _ocrContext = ocr_init(ocrArgs.Length, ocrArgs);
         }
 
-        public string PerformOcr(Bitmap image, int gotType)
+        public static DenseTensor<float> imageToTensor(Bitmap image)
         {
-            var result = "";
-            // Create target bitmap with black background
-            var targetSize = new Size(1024, 1024);
-
-            // Create a clone of the image to avoid access conflicts
-            using (var clonedImage = new Bitmap(image))
-            {
-                // Create tensor and copy pixel data
-                var tensor = new DenseTensor<float>(new[] { 1, 3, targetSize.Height, targetSize.Width });
+            // Create tensor and copy pixel data
+            var tensor = new DenseTensor<float>(new[] { 1, 3, image.Height, image.Width });
 
             // Convert cloned image to tensor format (CxHxW) with normalized values
-            for (int y = 0; y < targetSize.Height; y++)
+            for (int y = 0; y < image.Height; y++)
             {
-                for (int x = 0; x < targetSize.Width; x++)
+                for (int x = 0; x < image.Width; x++)
                 {
-                    var pixel = clonedImage.GetPixel(x, y);
+                    var pixel = image.GetPixel(x, y);
                     tensor[0, 0, y, x] = (float)((pixel.R * CONFIG_RESCALE_FACTOR - CONFIG_NORM_MEAN_R) / CONFIG_NORM_STD_R);  // Red channel
                     tensor[0, 1, y, x] = (float)((pixel.G * CONFIG_RESCALE_FACTOR - CONFIG_NORM_MEAN_G) / CONFIG_NORM_STD_G);  // Green channel
                     tensor[0, 2, y, x] = (float)((pixel.B * CONFIG_RESCALE_FACTOR - CONFIG_NORM_MEAN_B) / CONFIG_NORM_STD_B);  // Blue channel
                 }
             }
+            return tensor;
+        }
 
-            } // End of using clonedImage
+        public string PerformOcr(DenseTensor<float> tensor, int gotType)
+        {
+            var result = "";
 
             // Run the ONNX model
             var inputs = new List<NamedOnnxValue> { NamedOnnxValue.CreateFromTensor("input", tensor) };
@@ -121,7 +118,7 @@ namespace got_win
             // PtrToStringAnsi does not support UTF-8...
             var bytes = System.Text.Encoding.Unicode.GetBytes(Marshal.PtrToStringUni(resultPtr));
             var txt = System.Text.Encoding.UTF8.GetString(bytes);
-            txt.Replace("\n", "\r\n");
+            txt = txt.Replace("\n", "\r\n");
             result += txt;
             ocr_free_result(p);
             return result;

@@ -84,8 +84,10 @@ namespace got_win
                 }
                 picResized.Image = targetImage;
 
+                DenseTensor<float> tensor = OcrService.imageToTensor(targetImage);
+
                 // Perform OCR using the resized image and show result
-                string result = await Task.Run(() => _ocrService.PerformOcr(targetImage, 1));
+                string result = await Task.Run(() => _ocrService.PerformOcr(tensor, 1));
                 txtResult.Text = result;
                 
                 // Stop loading and re-enable button
