@@ -24,6 +24,9 @@ namespace got_win
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lblLoading;
+        private System.Windows.Forms.Timer timerLoading;
+        private int loadingDots = 0;
 
         public Form1()
         {
@@ -31,13 +34,29 @@ namespace got_win
             var encoderPath = "encoder_single.onnx";
             var ocrArgs = new[] { "got", "-m", "got_decoder-q4_k_m.gguf", "-ngl", "100", "--log-verbosity", "-1" };
             _ocrService = new OcrService(encoderPath, ocrArgs);
+            
+            // Initialize loading animation
+            timerLoading = new Timer();
+            timerLoading.Interval = 500;
+            timerLoading.Tick += TimerLoading_Tick;
         }
 
-        private void btnLoadImage_Click(object sender, EventArgs e)
+        private void TimerLoading_Tick(object sender, EventArgs e)
+        {
+            loadingDots = (loadingDots + 1) % 4;
+            lblLoading.Text = "Processing" + new string('.', loadingDots) + new string(' ', 3 - loadingDots);
+        }
+
+        private async void btnLoadImage_Click(object sender, EventArgs e)
         {
             using (var openFileDialog = new OpenFileDialog())
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
+                // Disable button and show loading
+                btnLoadImage.Enabled = false;
+                lblLoading.Visible = true;
+                timerLoading.Start();
+                
                 var imagePath = openFileDialog.FileName;
                 var originalImage = new Bitmap(imagePath);
                 
@@ -66,8 +85,13 @@ namespace got_win
                 picResized.Image = targetImage;
 
                 // Perform OCR using the resized image and show result
-                var result = _ocrService.PerformOcr(targetImage, 1);
+                string result = await Task.Run(() => _ocrService.PerformOcr(targetImage, 1));
                 txtResult.Text = result;
+                
+                // Stop loading and re-enable button
+                timerLoading.Stop();
+                lblLoading.Visible = false;
+                btnLoadImage.Enabled = true;
             }
         }
 
