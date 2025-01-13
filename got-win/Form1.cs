@@ -27,8 +27,7 @@ namespace got_win
         private System.Windows.Forms.Label lblLoading;
         private System.Windows.Forms.Timer timerLoading;
         private System.Windows.Forms.CheckBox chkFormatted;
-        private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.WebBrowser webBrowser1;
+        private System.Windows.Forms.Button btnPreview;
         private int loadingDots = 0;
 
         public Form1()
@@ -50,9 +49,9 @@ namespace got_win
             lblLoading.Text = "Processing" + new string('.', loadingDots) + new string(' ', 3 - loadingDots);
         }
 
-        private void UpdateMarkdownPreview()
+        private void btnPreview_Click(object sender, EventArgs e)
         {
-            string markdown = "$\\frac{1}{2}$" ;// txtResult.Text;
+            string markdown = txtResult.Text;
             string html = $@"
                 <html>
                     <head>
@@ -77,12 +76,10 @@ namespace got_win
                         {markdown}
                     </body>
                 </html>";
-            webBrowser1.DocumentText = html;
-        }
-
-        private void txtResult_TextChanged(object sender, EventArgs e)
-        {
-            UpdateMarkdownPreview();
+            
+            string tempFile = Path.GetTempFileName() + ".html";
+            File.WriteAllText(tempFile, html);
+            System.Diagnostics.Process.Start(tempFile);
         }
 
         private async void btnLoadImage_Click(object sender, EventArgs e)

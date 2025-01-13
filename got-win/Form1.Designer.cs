@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.btnLoadImage = new System.Windows.Forms.Button();
+            this.btnPreview = new System.Windows.Forms.Button();
             this.picOriginal = new System.Windows.Forms.PictureBox();
             this.picResized = new System.Windows.Forms.PictureBox();
             this.txtResult = new System.Windows.Forms.TextBox();
@@ -37,8 +38,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.lblLoading = new System.Windows.Forms.Label();
             this.chkFormatted = new System.Windows.Forms.CheckBox();
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.webBrowser1 = new System.Windows.Forms.WebBrowser();
             ((System.ComponentModel.ISupportInitialize)(this.picOriginal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picResized)).BeginInit();
             this.SuspendLayout();
@@ -53,6 +52,18 @@
             this.btnLoadImage.Text = "OCR Image";
             this.btnLoadImage.UseVisualStyleBackColor = true;
             this.btnLoadImage.Click += new System.EventHandler(this.btnLoadImage_Click);
+            
+            // 
+            // btnPreview
+            // 
+            this.btnPreview.Location = new System.Drawing.Point(176, 17);
+            this.btnPreview.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnPreview.Name = "btnPreview";
+            this.btnPreview.Size = new System.Drawing.Size(150, 42);
+            this.btnPreview.TabIndex = 10;
+            this.btnPreview.Text = "Preview";
+            this.btnPreview.UseVisualStyleBackColor = true;
+            this.btnPreview.Click += new System.EventHandler(this.btnPreview_Click);
             // 
             // picOriginal
             // 
@@ -82,44 +93,17 @@
             this.picResized.TabIndex = 2;
             this.picResized.TabStop = false;
             // 
-            // splitContainer1
-            // 
-            this.splitContainer1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.splitContainer1.Location = new System.Drawing.Point(18, 650);
-            this.splitContainer1.Name = "splitContainer1";
-            // 
-            // splitContainer1.Panel1
-            // 
-            this.splitContainer1.Panel1.Controls.Add(this.txtResult);
-            // 
-            // splitContainer1.Panel2
-            // 
-            this.splitContainer1.Panel2.Controls.Add(this.webBrowser1);
-            this.splitContainer1.Size = new System.Drawing.Size(1136, 471);
-            this.splitContainer1.SplitterDistance = 568;
-            this.splitContainer1.TabIndex = 9;
-            // 
             // txtResult
             // 
-            this.txtResult.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtResult.Location = new System.Drawing.Point(0, 0);
+            this.txtResult.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtResult.Location = new System.Drawing.Point(18, 650);
             this.txtResult.Margin = new System.Windows.Forms.Padding(4);
             this.txtResult.Multiline = true;
             this.txtResult.Name = "txtResult";
             this.txtResult.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtResult.Size = new System.Drawing.Size(568, 471);
+            this.txtResult.Size = new System.Drawing.Size(1136, 471);
             this.txtResult.TabIndex = 0;
-            this.txtResult.TextChanged += new System.EventHandler(this.txtResult_TextChanged);
-            // 
-            // webBrowser1
-            // 
-            this.webBrowser1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.webBrowser1.Location = new System.Drawing.Point(0, 0);
-            this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
-            this.webBrowser1.Name = "webBrowser1";
-            this.webBrowser1.Size = new System.Drawing.Size(564, 471);
-            this.webBrowser1.TabIndex = 0;
             // 
             // label1
             // 
@@ -180,7 +164,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1173, 1135);
             this.MinimumSize = new System.Drawing.Size(800, 600);
-            this.Controls.Add(this.splitContainer1);
+            this.Controls.Add(this.txtResult);
             this.Controls.Add(this.chkFormatted);
             this.Controls.Add(this.lblLoading);
             this.Controls.Add(this.label3);
