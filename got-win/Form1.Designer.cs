@@ -139,7 +139,7 @@
             // chkFormatted
             // 
             this.chkFormatted.AutoSize = true;
-            this.chkFormatted.Location = new System.Drawing.Point(176, 28);
+            this.chkFormatted.Location = new System.Drawing.Point(334, 28);
             this.chkFormatted.Name = "chkFormatted";
             this.chkFormatted.Size = new System.Drawing.Size(106, 22);
             this.chkFormatted.TabIndex = 7;
@@ -166,8 +166,8 @@
             this.MinimumSize = new System.Drawing.Size(800, 600);
             this.Controls.Add(this.btnPreview);
             this.Controls.Add(this.txtResult);
-            this.Controls.Add(this.chkFormatted);
             this.Controls.Add(this.lblLoading);
+            this.Controls.Add(this.chkFormatted);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
