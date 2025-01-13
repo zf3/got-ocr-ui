@@ -47,20 +47,25 @@ namespace got_win
             // Create target bitmap with black background
             var targetSize = new Size(1024, 1024);
 
-            // Create tensor and copy pixel data
-            var tensor = new DenseTensor<float>(new[] { 1, 3, targetSize.Height, targetSize.Width });
+            // Create a clone of the image to avoid access conflicts
+            using (var clonedImage = new Bitmap(image))
+            {
+                // Create tensor and copy pixel data
+                var tensor = new DenseTensor<float>(new[] { 1, 3, targetSize.Height, targetSize.Width });
 
-            // Convert image to tensor format (CxHxW) with normalized values
+            // Convert cloned image to tensor format (CxHxW) with normalized values
             for (int y = 0; y < targetSize.Height; y++)
             {
                 for (int x = 0; x < targetSize.Width; x++)
                 {
-                    var pixel = image.GetPixel(x, y);
+                    var pixel = clonedImage.GetPixel(x, y);
                     tensor[0, 0, y, x] = (float)((pixel.R * CONFIG_RESCALE_FACTOR - CONFIG_NORM_MEAN_R) / CONFIG_NORM_STD_R);  // Red channel
                     tensor[0, 1, y, x] = (float)((pixel.G * CONFIG_RESCALE_FACTOR - CONFIG_NORM_MEAN_G) / CONFIG_NORM_STD_G);  // Green channel
                     tensor[0, 2, y, x] = (float)((pixel.B * CONFIG_RESCALE_FACTOR - CONFIG_NORM_MEAN_B) / CONFIG_NORM_STD_B);  // Blue channel
                 }
             }
+
+            } // End of using clonedImage
 
             // Run the ONNX model
             var inputs = new List<NamedOnnxValue> { NamedOnnxValue.CreateFromTensor("input", tensor) };
