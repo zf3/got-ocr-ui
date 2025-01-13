@@ -33,7 +33,7 @@ namespace got_win
         {
             InitializeComponent();
             var encoderPath = "encoder_single.onnx";
-            var ocrArgs = new[] { "got", "-m", "got_decoder-q4_k_m.gguf", "-ngl", "100", "--log-verbosity", "-1" };
+            var ocrArgs = new[] { "got", "-m", "got_decoder-q4_k_m.gguf", "-ngl", "100", "--log-verbosity", "-1", "-n", "16384" };
             _ocrService = new OcrService(encoderPath, ocrArgs);
             
             // Initialize loading animation
