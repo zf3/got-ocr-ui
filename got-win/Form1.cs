@@ -27,6 +27,8 @@ namespace got_win
         private System.Windows.Forms.Label lblLoading;
         private System.Windows.Forms.Timer timerLoading;
         private System.Windows.Forms.CheckBox chkFormatted;
+        private System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.WebBrowser webBrowser1;
         private int loadingDots = 0;
 
         public Form1()
@@ -46,6 +48,41 @@ namespace got_win
         {
             loadingDots = (loadingDots + 1) % 4;
             lblLoading.Text = "Processing" + new string('.', loadingDots) + new string(' ', 3 - loadingDots);
+        }
+
+        private void UpdateMarkdownPreview()
+        {
+            string markdown = txtResult.Text;
+            string html = $@"
+                <html>
+                    <head>
+                        <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.2.0/github-markdown.min.css'>
+                        <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.min.js'></script>
+                        <style>
+                            .markdown-body {{
+                                box-sizing: border-box;
+                                min-width: 200px;
+                                max-width: 980px;
+                                margin: 0 auto;
+                                padding: 45px;
+                            }}
+                            @media (max-width: 767px) {{
+                                .markdown-body {{
+                                    padding: 15px;
+                                }}
+                            }}
+                        </style>
+                    </head>
+                    <body class='markdown-body'>
+                        {markdown}
+                    </body>
+                </html>";
+            webBrowser1.DocumentText = html;
+        }
+
+        private void txtResult_TextChanged(object sender, EventArgs e)
+        {
+            UpdateMarkdownPreview();
         }
 
         private async void btnLoadImage_Click(object sender, EventArgs e)
