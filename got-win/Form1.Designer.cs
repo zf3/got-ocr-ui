@@ -57,7 +57,7 @@
             this.picOriginal.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.picOriginal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.picOriginal.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.picOriginal.Location = new System.Drawing.Point(18, 111);
             this.picOriginal.Margin = new System.Windows.Forms.Padding(4);
             this.picOriginal.Name = "picOriginal";
@@ -71,7 +71,7 @@
             this.picResized.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.picResized.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.picResized.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.picResized.Location = new System.Drawing.Point(590, 111);
             this.picResized.Margin = new System.Windows.Forms.Padding(4);
             this.picResized.Name = "picResized";
@@ -115,6 +115,7 @@
             // 
             // label3
             // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(18, 628);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
