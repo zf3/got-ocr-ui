@@ -164,6 +164,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1173, 1135);
             this.MinimumSize = new System.Drawing.Size(800, 600);
+            this.Controls.Add(this.btnPreview);
             this.Controls.Add(this.txtResult);
             this.Controls.Add(this.chkFormatted);
             this.Controls.Add(this.lblLoading);
