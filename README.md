@@ -17,7 +17,7 @@ A Windows desktop application for optical character recognition (OCR) using the 
 - Windows 10/11 (64-bit)
 - .NET Framework 4.8
 - Visual Studio 2022 (for building from source)
-- NVIDIA GPU with CUDA support (optional, for better performance)
+- GPU with Vulkan driver (optional, for better performance)
 
 ## Installation
 
@@ -26,7 +26,6 @@ A Windows desktop application for optical character recognition (OCR) using the 
 3. Place the following model files in the application directory:
    - `encoder_single.onnx`
    - `got_decoder-q4_k_m.gguf`
-4. (Optional) Install CUDA and cuDNN for GPU acceleration
 
 ## Building from Source
 
@@ -60,16 +59,10 @@ msbuild got-win.sln /p:Configuration=Release /p:Platform=x64
 - Ensure the model files are in the correct location
 - Verify GPU drivers are up to date if using GPU acceleration
 - Check console output for any error messages
-- Increase system memory if processing large images
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## Acknowledgments
 
-- GOT-OCR2 model by MosRat
-- ONNX Runtime for model inference
-- Windows Forms for the GUI
+- GOT-OCR model
+- got.cpp by MosRat
 
 
