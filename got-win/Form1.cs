@@ -87,6 +87,7 @@ namespace got_win
                 DenseTensor<float> tensor = OcrService.imageToTensor(targetImage);
 
                 // Perform OCR using the resized image and show result
+                txtResult.Text = "";
                 string result = await Task.Run(() => _ocrService.PerformOcr(tensor, 1));
                 txtResult.Text = result;
                 
