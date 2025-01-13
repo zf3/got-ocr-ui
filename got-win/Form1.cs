@@ -52,12 +52,12 @@ namespace got_win
 
         private void UpdateMarkdownPreview()
         {
-            string markdown = txtResult.Text;
+            string markdown = "$\\frac{1}{2}$" ;// txtResult.Text;
             string html = $@"
                 <html>
                     <head>
                         <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.2.0/github-markdown.min.css'>
-                        <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.min.js'></script>
+                        <script id=""MathJax-script"" async src=""https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js""></script>
                         <style>
                             .markdown-body {{
                                 box-sizing: border-box;
