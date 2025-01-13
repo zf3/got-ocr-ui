@@ -36,6 +36,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.lblLoading = new System.Windows.Forms.Label();
+            this.chkFormatted = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.picOriginal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picResized)).BeginInit();
             this.SuspendLayout();
@@ -113,6 +114,16 @@
             this.label3.Size = new System.Drawing.Size(98, 18);
             this.label3.TabIndex = 6;
             this.label3.Text = "OCR Result";
+            // chkFormatted
+            // 
+            this.chkFormatted.AutoSize = true;
+            this.chkFormatted.Location = new System.Drawing.Point(176, 28);
+            this.chkFormatted.Name = "chkFormatted";
+            this.chkFormatted.Size = new System.Drawing.Size(106, 22);
+            this.chkFormatted.TabIndex = 7;
+            this.chkFormatted.Text = "Formatted";
+            this.chkFormatted.UseVisualStyleBackColor = true;
+            // 
             // lblLoading
             // 
             this.lblLoading.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -121,7 +132,7 @@
             this.lblLoading.Location = new System.Drawing.Point(1030, 28);
             this.lblLoading.Name = "lblLoading";
             this.lblLoading.Size = new System.Drawing.Size(147, 18);
-            this.lblLoading.TabIndex = 7;
+            this.lblLoading.TabIndex = 8;
             this.lblLoading.Text = "Processing   ";
             this.lblLoading.Visible = false;
             // 
@@ -130,6 +141,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1193, 1135);
+            this.Controls.Add(this.chkFormatted);
             this.Controls.Add(this.lblLoading);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);

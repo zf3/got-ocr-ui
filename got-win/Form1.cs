@@ -26,6 +26,7 @@ namespace got_win
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label lblLoading;
         private System.Windows.Forms.Timer timerLoading;
+        private System.Windows.Forms.CheckBox chkFormatted;
         private int loadingDots = 0;
 
         public Form1()
@@ -88,7 +89,8 @@ namespace got_win
 
                 // Perform OCR using the resized image and show result
                 txtResult.Text = "";
-                string result = await Task.Run(() => _ocrService.PerformOcr(tensor, 1));
+                int gotType = chkFormatted.Checked ? 2 : 1;
+                string result = await Task.Run(() => _ocrService.PerformOcr(tensor, gotType));
                 txtResult.Text = result;
                 
                 // Stop loading and re-enable button
