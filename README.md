@@ -3,12 +3,17 @@
 
 A Windows desktop application for optical character recognition (OCR) using the [GOT-OCR2](https://huggingface.co/stepfun-ai/GOT-OCR2_0) model. This application provides a graphical interface for converting images containing text into editable and formatted text.
 
+Here’s a screenshot featuring the image preview at the top, followed by the OCR-extracted markdown/latex text, and the rendered text displayed below.
+
+<a href="doc/got-ocr-ui.png"><img src="doc/got-ocr-ui.png" width="300"></a>
+
+
 ## Features
 
 - Load and preview images
 - Automatic image resizing and preprocessing
 - OCR processing with GOT-OCR2 model
-- Formatted text output (Markdown)
+- Formatted text output (Markdown and Latex)
 - HTML preview of formatted output
 - GPU acceleration support
 
