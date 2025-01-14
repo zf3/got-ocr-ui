@@ -1,7 +1,7 @@
 
 # GOT-OCR2 Windows GUI
 
-A Windows desktop application for optical character recognition (OCR) using the [GOT-OCR2](https://huggingface.co/stepfun-ai/GOT-OCR2_0) model. This application provides a graphical interface for converting images containing text into editable and formatted text.
+A Windows desktop application for local optical character recognition (OCR) using the [GOT-OCR2](https://huggingface.co/stepfun-ai/GOT-OCR2_0) model. This application provides a graphical interface for converting images containing text into editable and formatted text.
 
 Here’s a screenshot featuring the image preview at the top, followed by the OCR-extracted markdown/latex text, and the rendered text displayed below.
 
