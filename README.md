@@ -55,7 +55,7 @@ msbuild got-win.sln /p:Configuration=Release /p:Platform=x64
 
 ## Acknowledgments
 
-- GOT-OCR model
-- got.cpp by MosRat
+- [GOT-OCR model](https://huggingface.co/stepfun-ai/GOT-OCR2_0)
+- [got.cpp](https://github.com/MosRat/got.cpp/) by MosRat
 
 
