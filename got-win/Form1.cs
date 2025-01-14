@@ -20,10 +20,8 @@ namespace got_win
         private OcrService _ocrService;
         private System.Windows.Forms.Button btnLoadImage;
         private System.Windows.Forms.PictureBox picOriginal;
-        private System.Windows.Forms.PictureBox picResized;
         private System.Windows.Forms.TextBox txtResult;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label lblLoading;
         private System.Windows.Forms.Timer timerLoading;
@@ -99,7 +97,7 @@ namespace got_win
                 // Show original image
                 picOriginal.Image = originalImage;
                 
-                // Create and show resized image
+                // Create resized image for OCR processing
                 var targetSize = new Size(1024, 1024);
                 var targetImage = new Bitmap(targetSize.Width, targetSize.Height, System.Drawing.Imaging.PixelFormat.Format24bppRgb);
 
@@ -115,10 +113,9 @@ namespace got_win
                         (targetSize.Width - newSize.Width) / 2,
                         (targetSize.Height - newSize.Height) / 2,
                         newSize.Width,
-                    newSize.Height);
+                        newSize.Height);
                     graphics.DrawImage(originalImage, destRect, new Rectangle(0, 0, originalImage.Width, originalImage.Height), GraphicsUnit.Pixel);
                 }
-                picResized.Image = targetImage;
 
                 DenseTensor<float> tensor = OcrService.imageToTensor(targetImage);
 

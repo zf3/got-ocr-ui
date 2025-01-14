@@ -31,15 +31,12 @@
             this.btnLoadImage = new System.Windows.Forms.Button();
             this.btnPreview = new System.Windows.Forms.Button();
             this.picOriginal = new System.Windows.Forms.PictureBox();
-            this.picResized = new System.Windows.Forms.PictureBox();
             this.txtResult = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.lblLoading = new System.Windows.Forms.Label();
             this.chkFormatted = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.picOriginal)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picResized)).BeginInit();
             this.SuspendLayout();
             // 
             // btnLoadImage
@@ -71,27 +68,13 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.picOriginal.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.picOriginal.Location = new System.Drawing.Point(18, 111);
+            this.picOriginal.Location = new System.Drawing.Point(304, 111);
             this.picOriginal.Margin = new System.Windows.Forms.Padding(4);
             this.picOriginal.Name = "picOriginal";
             this.picOriginal.Size = new System.Drawing.Size(564, 501);
             this.picOriginal.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picOriginal.TabIndex = 1;
             this.picOriginal.TabStop = false;
-            // 
-            // picResized
-            // 
-            this.picResized.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.picResized.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.picResized.Location = new System.Drawing.Point(590, 111);
-            this.picResized.Margin = new System.Windows.Forms.Padding(4);
-            this.picResized.Name = "picResized";
-            this.picResized.Size = new System.Drawing.Size(564, 501);
-            this.picResized.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.picResized.TabIndex = 2;
-            this.picResized.TabStop = false;
             // 
             // txtResult
             // 
@@ -169,16 +152,13 @@
             this.Controls.Add(this.lblLoading);
             this.Controls.Add(this.chkFormatted);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.picResized);
             this.Controls.Add(this.picOriginal);
             this.Controls.Add(this.btnLoadImage);
             this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Form1";
             this.Text = "GOT-OCR UI";
             ((System.ComponentModel.ISupportInitialize)(this.picOriginal)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picResized)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
